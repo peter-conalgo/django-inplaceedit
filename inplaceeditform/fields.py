@@ -221,7 +221,7 @@ class BaseAdaptorField(object):
 
 
 class AdaptorNumberField(BaseAdaptorField):
-	pass
+    pass
 
 class AdaptorTextField(BaseAdaptorField):
 

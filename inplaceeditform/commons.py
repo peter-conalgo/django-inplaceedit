@@ -92,12 +92,12 @@ def get_adaptor_class(adaptor=None, obj=None, field_name=None):
                 adaptor = 'choices'
         elif isinstance(field, models.TextField):
             adaptor = 'textarea'
-		else:
+        else:
             adaptor = 'base'
 
     path_adaptor = ((getattr(settings, 'ADAPTOR_INPLACEEDIT', None) and
-							 settings.ADAPTOR_INPLACEEDIT.get(adaptor, None)) or
-							 (DEFAULT_ADAPTOR_INPLACEEDIT.get(adaptor, None)))
+                             settings.ADAPTOR_INPLACEEDIT.get(adaptor, None)) or
+                             (DEFAULT_ADAPTOR_INPLACEEDIT.get(adaptor, None)))
 
     if not path_adaptor and adaptor:
         return get_adaptor_class(obj=obj, field_name=field_name)
