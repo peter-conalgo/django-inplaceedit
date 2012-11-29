@@ -118,7 +118,7 @@ class BaseAdaptorField(object):
             return edit_empty_value
         else:
             return ugettext(getattr(settings, 'INPLACEEDIT_EDIT_EMPTY_VALUE',
-                                    'Dobleclick to edit'))
+                                    'Double click to edit'))
 
     def render_field(self, template_name="inplaceeditform/render_field.html", extra_context=None):
         extra_context = extra_context or {}
@@ -207,7 +207,7 @@ class BaseAdaptorField(object):
                 self.transmeta = True
                 if not self.render_value(self.field_name):
                     message_translation = ugettext(getattr(settings, 'INPLACEEDIT_EDIT_MESSAGE_TRANSLATION',
-                                                           'Write a traslation'))
+                                                           'Write a translation'))
                     self.initial = {self.field_name: message_translation}
                 return
         self.transmeta = False
