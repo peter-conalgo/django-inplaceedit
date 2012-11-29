@@ -21,7 +21,7 @@ Video Demo, of django-inplaceedit and `Django-inlinetrans <http://pypi.python.or
    :target: http://www.youtube.com/watch?v=_EjisXtMy_Y
 
 
-Requeriments
+Requirements
 ============
 
  * `jQuery <http://jquery.com/>`_
@@ -76,13 +76,13 @@ Optional:
 
 ::
 
-    INPLACEEDIT_EDIT_EMPTY_VALUE = 'Doble click to edit'
+    INPLACEEDIT_EDIT_EMPTY_VALUE = 'Double click to edit'
     INPLACEEDIT_AUTO_SAVE = True
     INPLACEEDIT_EVENT = "dblclick"
     INPLACEEDIT_DISABLE_CLICK = True  # For inplace edit text into a link tag
     INPLACEEDIT_EDIT_MESSAGE_TRANSLATION = 'Write a translation' # transmeta option
-    DEFAULT_INPLACE_EDIT_OPTIONS = {} # dictionnary of the optionals parameters that the templatetag can receive to change its behavior (see the Advanced usage section)
-    DEFAULT_INPLACE_EDIT_OPTIONS_ONE_BY_ONE = True # modify the behavior of the DEFAULT_INPLACE_EDIT_OPTIONS usage, if True then it use the default values not specified in your template, if False it uses these options only when the dictionnary is empty (when you do put any options in your template)
+    DEFAULT_INPLACE_EDIT_OPTIONS = {} # dictionary of the optionals parameters that the templatetag can receive to change its behavior (see the Advanced usage section)
+    DEFAULT_INPLACE_EDIT_OPTIONS_ONE_BY_ONE = True # modify the behavior of the DEFAULT_INPLACE_EDIT_OPTIONS usage, if True then it use the default values not specified in your template, if False it uses these options only when the dictionary is empty (when you do put any options in your template)
 
 
 In your urls.py
@@ -214,11 +214,11 @@ Python API
  * classes: Classes of tag cover. By default "inplaceedit" and "myadaptorinplaceedit"
  * get_config: Preprocessed of the configuration. By default, it does nothing.
  * get_form_class: It returns the form class.
- * get_form: It returns a instace of form class.
+ * get_form: It returns a instance of form class.
  * get_field: It returns a field of instance of form class.
  * render_value: It returns the render of the value. If you write {% inplace_edit "obj.name|filter1" %} it returns something like this {{ obj.name|filter1 }}.
  * render_value_edit: It returns the render value if you can edit. It returns by default the same of "render_value", but if the value is None call to empty_value
- * empty_value: It returns an empty value for this adaptor. By default, 'Dobleclick to edit'.
+ * empty_value: It returns an empty value for this adaptor. By default, 'Double click to edit'.
  * render_field: It returns the render of form, with a field.
  * render_media_field: It returns the media (scripts and css) of the field.
  * render_config: It returns the render of config.
@@ -240,7 +240,7 @@ JavaScript API
 
 There are four hooks,
 
- * getValue: if the value is componing for various widgets, you can set the function getValue, to these DOM elements. Something like this:
+ * getValue: if the value is composed from various widgets, you can set the function getValue, to these DOM elements. Something like this:
 
     ::
 
@@ -322,10 +322,10 @@ By default you can inline edit a field if you are authenticated with a superuser
 Overwriting the default permission adaptor
 -------------------------------------------
 
-This package have two inplementations:
+This package have two implementations:
 
  * SuperUserPermEditInline (by default): Only you can edit if you are super user
- * AdminDjangoPermEditInline: Yo can edit the content if you have a permission edit for that model. If you want enabled this, write in your settings:
+ * AdminDjangoPermEditInline: You can edit the content if you have a permission edit for that model. If you want enabled this, write in your settings:
 
  ::
 
