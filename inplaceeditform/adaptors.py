@@ -1,5 +1,6 @@
 ADAPTOR_INPLACEEDIT = {
                        'text': 'inplaceeditform.fields.AdaptorTextField',
+                       'number': 'inplaceeditform.fields.AdaptorNumberField',
                        'textarea': 'inplaceeditform.fields.AdaptorTextAreaField',
                        'choices': 'inplaceeditform.fields.AdaptorChoicesField',
                        'boolean': 'inplaceeditform.fields.AdaptorBooleanField',
@@ -10,4 +11,5 @@ ADAPTOR_INPLACEEDIT = {
                        'm2mcomma': 'inplaceeditform.fields.AdaptorCommaSeparatedManyToManyField',
                        'file': 'inplaceeditform.fields.AdaptorFileField',
                        'image': 'inplaceeditform.fields.AdaptorImageField',
+                       'base': 'inplaceeditform.fields.BaseAdaptorField',
                        }

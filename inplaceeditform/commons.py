@@ -69,18 +69,13 @@ def get_adaptor_class(adaptor=None, obj=None, field_name=None):
         except FieldDoesNotExist:
             if has_transmeta:
                 field = obj._meta.get_field_by_name(transmeta.get_real_fieldname(field_name))[0]
-        if isinstance(field, models.CharField):
-            adaptor = 'text'
-            if getattr(field, 'choices', None):
-                adaptor = 'choices'
-        elif isinstance(field, models.TextField):
-            adaptor = 'textarea'
-        elif isinstance(field, models.BooleanField):
+
+        if isinstance(field, models.BooleanField):
             adaptor = 'boolean'
-        elif isinstance(field, models.DateTimeField):
-            adaptor = 'datetime'
         elif isinstance(field, models.DateField):
             adaptor = 'date'
+        elif isinstance(field, models.DateTimeField):
+            adaptor = 'datetime'
         elif isinstance(field, ForeignKey):
             adaptor = 'fk'
         elif isinstance(field, ManyToManyField):
@@ -89,15 +84,27 @@ def get_adaptor_class(adaptor=None, obj=None, field_name=None):
             adaptor = 'image'
         elif isinstance(field, models.FileField):
             adaptor = 'file'
-    from inplaceeditform.fields import BaseAdaptorField
-    path_adaptor = adaptor and ((getattr(settings, 'ADAPTOR_INPLACEEDIT', None) and
-                                 settings.ADAPTOR_INPLACEEDIT.get(adaptor, None)) or
-                                 (DEFAULT_ADAPTOR_INPLACEEDIT.get(adaptor, None)))
+        elif isinstance(field, (models.IntegerField, models.DecimalField)):
+            adaptor = 'number'
+        elif isinstance(field, models.CharField):
+            adaptor = 'text'
+            if getattr(field, 'choices', None):
+                adaptor = 'choices'
+        elif isinstance(field, models.TextField):
+            adaptor = 'textarea'
+		else:
+            adaptor = 'base'
+
+    path_adaptor = ((getattr(settings, 'ADAPTOR_INPLACEEDIT', None) and
+							 settings.ADAPTOR_INPLACEEDIT.get(adaptor, None)) or
+							 (DEFAULT_ADAPTOR_INPLACEEDIT.get(adaptor, None)))
+
     if not path_adaptor and adaptor:
         return get_adaptor_class(obj=obj, field_name=field_name)
-    elif not path_adaptor:
-        return BaseAdaptorField
-    path_module, class_adaptor = ('.'.join(path_adaptor.split('.')[:-1]), path_adaptor.split('.')[-1])
+
+    parts = path_adaptor.split('.')
+    path_module, class_adaptor = ('.'.join(parts[:-1]), parts[-1])
+
     return getattr(import_module(path_module), class_adaptor)
 
 

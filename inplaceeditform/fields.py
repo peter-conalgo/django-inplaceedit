@@ -220,6 +220,9 @@ class BaseAdaptorField(object):
         return translatable_fields
 
 
+class AdaptorNumberField(BaseAdaptorField):
+	pass
+
 class AdaptorTextField(BaseAdaptorField):
 
     INCREASE_HEIGHT = 3
