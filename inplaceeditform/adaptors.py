@@ -11,5 +11,5 @@ ADAPTOR_INPLACEEDIT = {
                        'm2mcomma': 'inplaceeditform.fields.AdaptorCommaSeparatedManyToManyField',
                        'file': 'inplaceeditform.fields.AdaptorFileField',
                        'image': 'inplaceeditform.fields.AdaptorImageField',
-                       'base': 'inplaceeditform.fields.BaseAdaptorField',
+                       'default': 'inplaceeditform.fields.BaseAdaptorField',
                        }

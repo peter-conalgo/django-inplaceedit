@@ -93,7 +93,7 @@ def get_adaptor_class(adaptor=None, obj=None, field_name=None):
         elif isinstance(field, models.TextField):
             adaptor = 'textarea'
         else:
-            adaptor = 'base'
+            adaptor = 'default'
 
     path_adaptor = ((getattr(settings, 'ADAPTOR_INPLACEEDIT', None) and
                              settings.ADAPTOR_INPLACEEDIT.get(adaptor, None)) or
