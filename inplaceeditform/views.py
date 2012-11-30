@@ -36,7 +36,11 @@ def save_ajax(request):
         messages = []  # The error is for another field that you are editing
         for field_name_error, errors_field in form.errors.items():
             for error in errors_field:
-                messages.append("%s: %s" % (field_name_error, unicode(error)))
+				if field_name_error[0:2] == '__':
+					# don't show __all__ to user.
+					messages.append(unicode(error))
+				else:
+					messages.append("%s: %s" % (field_name_error, unicode(error)))
         message_i18n = ','.join(messages)
         return _get_http_response({'errors': message_i18n})
     except ValidationError, error:  # The error is for a field that you are editing
