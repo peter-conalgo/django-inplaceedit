@@ -86,6 +86,8 @@ def get_adaptor_class(adaptor=None, obj=None, field_name=None):
             adaptor = 'file'
         elif isinstance(field, (models.IntegerField, models.DecimalField)):
             adaptor = 'number'
+            if getattr(field, 'choices', None):
+                adaptor = 'choices'
         elif isinstance(field, models.CharField):
             adaptor = 'text'
             if getattr(field, 'choices', None):
